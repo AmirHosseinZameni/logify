@@ -1,20 +1,21 @@
 import FormInput from "../components/FormInput";
-import Button from "../components/Button";
-import GoogleIcon from "../components/GoogleIcon";
-import FacebookIcon from "../components/FacebookIcon";
-import AppleIcon from "../components/AppleIcon";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Login() {
+
+function Register() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [user, setUser] = useState("");
+  const [userNumber, setUserNumber] = useState("");
   function handleSubmit(e) {
     e.preventDefault();
     if (!userName || !password) return;
     console.log("Submitted!", { userName, password });
     setUserName("");
     setPassword("");
+    setUser("");
+    setUserNumber("");
   }
   return (
     <div className="bg-[url('/assets/bg.png')]  w-screen h-screen bg-cover bg-center flex flex-row justify-end ">
@@ -29,43 +30,15 @@ function Login() {
           </h1>
           <div className="flex flex-col font-[poppins] text-[13px]">
             <a href="#" className="text-[#8D8D8D]">
-              No Account?
+              Have an account?
             </a>
-
-            <Link to="/Register" className="text-[#779341]">
-              Sign up
+            <Link to="/login" className="text-[#779341]">
+              Sign in
             </Link>
           </div>
         </div>
-        <h3 className=" font-medium text-[55px]">Sign in</h3>
-        <div className=" flex gap-5 mt-10.5">
-          <Button
-            text="Sign in with google"
-            icon={<GoogleIcon className="w-6 h-6" />}
-            className="bg-[#E9F1FF]
-          text-[#4285F4]
-            text-[16px]
-            font-regular
-            w-75
-            h-14
-            pl-8
-            rounded-[9px]
-            flex
-            justify-start
-            items-center
-            gap-5"
-          />
-          <div className="flex gap-3.25 ">
-            <Button
-              className="flex justify-center items-center w-15 h-14 bg-white rounded-[9px]"
-              icon={<FacebookIcon className="w-7 h-7" />}
-            />
-            <Button
-              className="flex justify-center items-center w-15 h-14 bg-white rounded-[9px]"
-              icon={<AppleIcon className="w-7 h-7" />}
-            />
-          </div>
-        </div>
+        <h3 className=" font-medium text-[55px]">Sign up</h3>
+
         <FormInput
           label="Enter your username or email address"
           className="flex flex-col gap-3 mt-13"
@@ -74,6 +47,24 @@ function Login() {
           value={userName}
           onChange={setUserName}
         />
+        <div className="flex gap-4.75 mt-8.75">
+          <FormInput
+            label="User name"
+            className=""
+            placeHolder="User name"
+            type="text"
+            value={user}
+            onChange={setUser}
+          />
+          <FormInput
+            label="Contact Number"
+            className=""
+            placeHolder="Contact Number"
+            type="number"
+            value={userNumber}
+            onChange={setUserNumber}
+          />
+        </div>
         <FormInput
           label="Enter your Password"
           className="flex flex-col gap-3 mt-9.5"
@@ -97,4 +88,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;
